@@ -32,9 +32,17 @@ changeButton.addEventListener('click',function whenClicked(){
     }
 })
 
+//when clear button clicked => it clears all divs back color
+const clearbutton = document.querySelector('.clear-all');
+clearbutton.addEventListener('click', () => {
+    for (const child of divContainer.children){
+        child.style.backgroundColor = '';
+    }
+})
+
+//create a specified amount of div element
 function createDivs(userGrid){
     for (let index = 0; index < userGrid**2; index++){
-        //create a div element and select main container
         const div = document.createElement('div');
         div.setAttribute('class', 'grid-blocks');
         div.style.border = "1px solid grey"
