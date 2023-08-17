@@ -1,0 +1,35 @@
+body {
+    display: flex;
+    flex-flow: column wrap;
+    margin: 0;
+    height: 100vh;
+    justify-content: space-around;
+}
+
+
+header {
+    align-self: center;
+    font-size: 2rem;
+    font-family: monospace;
+    margin: 1rem;
+}
+
+.main-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.drawing-container {
+    display: flex;
+    border: 1px solid black;
+    height: 500px;
+    width: 500px;
+    flex-wrap: wrap;
+}
+
+.info-container {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+}
