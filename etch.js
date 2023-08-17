@@ -19,6 +19,19 @@ range.addEventListener('input', () => {
     createDivs(amount);
 })
 
+//when draw button is clicked
+    //change color of div to black when mouse is hovered over it
+const changeButton = document.querySelector('.changingColor');
+changeButton.addEventListener('click',function whenClicked(){
+    for (const child of divContainer.children){
+        child.addEventListener('mouseover',
+        function setColor(){
+            child.style.backgroundColor =
+            'black'
+        })
+    }
+})
+
 function createDivs(userGrid){
     for (let index = 0; index < userGrid**2; index++){
         //create a div element and select main container
@@ -30,6 +43,3 @@ function createDivs(userGrid){
         divContainer.appendChild(div)
     }
 }
-
-//create a func
-    // deletes all previous divs inside divContainer;
