@@ -70,7 +70,17 @@ rainbowButton.addEventListener('click', () => {
     }
 })
 
-//color picker button
+//customized color picker button
+const colorPicker = document.querySelector('.colorPicker');
+colorPicker.addEventListener('click', () => {
+    for (const child of divContainer.children){
+        child.addEventListener('mouseover', (e) => {
+            e.target.style.backgroundColor = colorPicker.value;
+            e.target.style.opacity = 1;
+        })
+    }
+})
+
 
 //create a specified amount of div element
 function createDivs(userGrid){
