@@ -40,6 +40,38 @@ clearbutton.addEventListener('click', () => {
     }
 })
 
+//when randomizer clicked => random colors are generated
+const randomizer = document.querySelector('.randomizer');
+randomizer.addEventListener('click', function setRandomColor(){
+    for(const child of divContainer.children){
+        child.addEventListener('mouseover', (event) => {
+            event.target.style.backgroundColor = "#" + Math.floor(Math.random()*16777215).toString(16);
+        })
+    }
+})
+
+//when clicked => will generate only rainbow Colors
+const setRainbowColor = [
+    '#9400D3',
+    '#4B0082',
+    '#0000FF',
+    '#00FF00',
+    '#FFFF00',
+    '#FF7F00',
+    '#FF0000' 
+];
+
+const rainbowButton = document.querySelector('.rainbowColor');
+rainbowButton.addEventListener('click', () => {
+    for (const child of divContainer.children){
+        child.addEventListener('mouseover', (event) => {
+            event.target.style.backgroundColor = setRainbowColor[Math.floor(Math.random()*7)]
+        })
+    }
+})
+
+//color picker button
+
 //create a specified amount of div element
 function createDivs(userGrid){
     for (let index = 0; index < userGrid**2; index++){
