@@ -19,6 +19,13 @@ range.addEventListener('input', () => {
     createDivs(amount);
 })
 
+const brightness = document.querySelector('#brightnessSlider')
+brightness.addEventListener('input', () => {
+    for (const child of divContainer.children){
+        child.style.filter = 'brightness(' + brightness.value + ')'
+    }
+})
+
 //when draw button is clicked
     //change color of div to black when mouse is hovered over it
 const changeButton = document.querySelector('.changingColor');
@@ -76,11 +83,19 @@ colorPicker.addEventListener('click', () => {
     for (const child of divContainer.children){
         child.addEventListener('mouseover', (e) => {
             e.target.style.backgroundColor = colorPicker.value;
-            e.target.style.opacity = 1;
         })
     }
 })
 
+//clearpixels button => when clicked => will remove all border
+const clearPixels = document.querySelector('.clearPixels')
+clearPixels.addEventListener('click', () => {
+    for (const child of divContainer.children){
+        child.style.border = 'none';
+        child.style.width = "calc(" + (divContainer.clientWidth/range.value) + "px" + ")";
+        child.style.height = "calc(" + (divContainer.clientHeight/range.value) + "px" + ")";
+    }
+})
 
 //create a specified amount of div element
 function createDivs(userGrid){
