@@ -28,34 +28,32 @@ brightness.addEventListener('input', () => {
 
 //when draw button is clicked
     //change color of div to black when mouse is hovered over it
-const changeButton = document.querySelector('.changingColor');
-changeButton.addEventListener('click',function whenClicked(){
-    for (const child of divContainer.children){
-        child.addEventListener('mouseover',
-        function setColor(){
-            child.style.backgroundColor =
-            'black'
-        })
-    }
-})
+//const changeButton = document.querySelector('.changingColor');
+//changeButton.addEventListener('click',function whenClicked(){
+//     for (const child of divContainer.children){
+//         child.addEventListener('mouseover', (e) => {
+//             e.target.style.backgroundColor = 'black'
+//         })
+//     }
+// })
 
 //when clear button clicked => it clears all divs back color
-const clearbutton = document.querySelector('.clear-all');
-clearbutton.addEventListener('click', () => {
-    for (const child of divContainer.children){
-        child.style.backgroundColor = '';
-    }
-})
+// const clearbutton = document.querySelector('.clear-all');
+// clearbutton.addEventListener('click', () => {
+//     for (const child of divContainer.children){
+//         child.style.backgroundColor = '';
+//     }
+// })
 
 //when randomizer clicked => random colors are generated
-const randomizer = document.querySelector('.randomizer');
-randomizer.addEventListener('click', function setRandomColor(){
-    for(const child of divContainer.children){
-        child.addEventListener('mouseover', (event) => {
-            event.target.style.backgroundColor = "#" + Math.floor(Math.random()*16777215).toString(16);
-        })
-    }
-})
+// const randomizer = document.querySelector('.randomizer');
+// randomizer.addEventListener('click', function setRandomColor(){
+//     for(const child of divContainer.children){
+//         child.addEventListener('mouseover', (event) => {
+//             event.target.style.backgroundColor = "#" + Math.floor(Math.random()*16777215).toString(16);
+//         })
+//     }
+// })
 
 //when clicked => will generate only rainbow Colors
 const setRainbowColor = [
@@ -68,14 +66,14 @@ const setRainbowColor = [
     '#FF0000' 
 ];
 
-const rainbowButton = document.querySelector('.rainbowColor');
-rainbowButton.addEventListener('click', () => {
-    for (const child of divContainer.children){
-        child.addEventListener('mouseover', (event) => {
-            event.target.style.backgroundColor = setRainbowColor[Math.floor(Math.random()*7)]
-        })
-    }
-})
+// const rainbowButton = document.querySelector('.rainbowColor');
+// rainbowButton.addEventListener('click', () => {
+//     for (const child of divContainer.children){
+//         child.addEventListener('mouseover', (event) => {
+//             event.target.style.backgroundColor = setRainbowColor[Math.floor(Math.random()*7)]
+//         })
+//     }
+// })
 
 //customized color picker button
 const colorPicker = document.querySelector('.colorPicker');
@@ -88,14 +86,14 @@ colorPicker.addEventListener('click', () => {
 })
 
 //clearpixels button => when clicked => will remove all border
-const clearPixels = document.querySelector('.clearPixels')
-clearPixels.addEventListener('click', () => {
-    for (const child of divContainer.children){
-        child.style.border = 'none';
-        child.style.width = "calc(" + (divContainer.clientWidth/range.value) + "px" + ")";
-        child.style.height = "calc(" + (divContainer.clientHeight/range.value) + "px" + ")";
-    }
-})
+// const clearPixels = document.querySelector('.clearPixels')
+// clearPixels.addEventListener('click', () => {
+//     for (const child of divContainer.children){
+//         child.style.border = 'none';
+//         child.style.width = "calc(" + (divContainer.clientWidth/range.value) + "px" + ")";
+//         child.style.height = "calc(" + (divContainer.clientHeight/range.value) + "px" + ")";
+//     }
+// })
 
 //create a specified amount of div element
 function createDivs(userGrid){
@@ -106,5 +104,40 @@ function createDivs(userGrid){
         div.style.width = "calc(" + (divContainer.clientWidth/userGrid) + "px" + " - " + 2 + "px" + ")";
         div.style.height = "calc(" + (divContainer.clientHeight/userGrid) + "px" + " - " + 2 + "px" + ")";
         divContainer.appendChild(div)
+    }
+}
+
+//create a queryselector for all buttons 
+const allButtons = document.querySelectorAll('button');
+for (const btn of allButtons){
+    btn.addEventListener('click', (event) => {
+        allInOneCaptain(event.target)
+    });
+}
+
+function allInOneCaptain(buttonValue){
+    for (const child of divContainer.children){
+        // if (buttonValue.innerHTML == 'REMOVE PIXELS'){
+        //     child.style.border = 'none';
+        //     child.style.width = "calc(" + (divContainer.clientWidth/range.value) + "px" + ")";
+        //     child.style.height = "calc(" + (divContainer.clientHeight/range.value) + "px" + ")";
+        // }
+        // else if (buttonValue.innerHTML == 'CLEAR'){
+        //     child.style.backgroundColor = '';
+        // }
+        child.addEventListener('mouseover', (e) => {
+            if (buttonValue.innerHTML == "DRAW"){
+                // e.target.style.backgroundColor = 'black';
+                console.log('DRAW')
+            }
+            else if (buttonValue.innerHTML == "RANDOMIZER"){
+                // child.style.backgroundColor = "#" + Math.floor(Math.random()*16777215).toString(16);
+                console.log('RANDOMIZER')
+            }
+            else if (buttonValue.innerHTML == "VIBGYOR"){
+                // e.target.style.backgroundColor = setRainbowColor[Math.floor(Math.random()*7)];
+                console.log('RAINBOW')
+            }
+        })
     }
 }
