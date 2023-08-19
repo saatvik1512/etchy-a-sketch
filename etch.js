@@ -115,28 +115,31 @@ for (const btn of allButtons){
     });
 }
 
+
+
 function allInOneCaptain(buttonValue){
     for (const child of divContainer.children){
-        // if (buttonValue.innerHTML == 'REMOVE PIXELS'){
-        //     child.style.border = 'none';
-        //     child.style.width = "calc(" + (divContainer.clientWidth/range.value) + "px" + ")";
-        //     child.style.height = "calc(" + (divContainer.clientHeight/range.value) + "px" + ")";
-        // }
-        // else if (buttonValue.innerHTML == 'CLEAR'){
-        //     child.style.backgroundColor = '';
-        // }
+        if (buttonValue.innerHTML == 'REMOVE PIXELS'){
+            child.style.border = 'none';
+            child.style.width = "calc(" + (divContainer.clientWidth/range.value) + "px" + ")";
+            child.style.height = "calc(" + (divContainer.clientHeight/range.value) + "px" + ")";
+        }
+        else if (buttonValue.innerHTML == 'CLEAR'){
+            child.style.backgroundColor = '';
+        }
         child.addEventListener('mouseover', (e) => {
             if (buttonValue.innerHTML == "DRAW"){
-                // e.target.style.backgroundColor = 'black';
-                console.log('DRAW')
+                e.target.style.backgroundColor = 'black';
+
             }
             else if (buttonValue.innerHTML == "RANDOMIZER"){
-                // child.style.backgroundColor = "#" + Math.floor(Math.random()*16777215).toString(16);
-                console.log('RANDOMIZER')
+                child.style.backgroundColor = "#" + Math.floor(Math.random()*16777215).toString(16);
             }
             else if (buttonValue.innerHTML == "VIBGYOR"){
-                // e.target.style.backgroundColor = setRainbowColor[Math.floor(Math.random()*7)];
-                console.log('RAINBOW')
+                e.target.style.backgroundColor = setRainbowColor[Math.floor(Math.random()*7)];
+            }
+            else if (buttonValue.innerHTML == 'STOP'){
+                console.log(e.target.style.backgroundColor);
             }
         })
     }
