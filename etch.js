@@ -1,10 +1,7 @@
 //selecting input range
 const range = document.getElementById('range-slider');
 
-//selecting paragraph
-const rangeShower = document.querySelector('.rangeSliderValue');
-
-//selecting main container
+//selecting drawing container
 const divContainer = document.querySelector('.drawing-container');
 
 //default 2 * 2 grid at start
@@ -20,7 +17,7 @@ for (const btn of allButtons){
 
 //when slided => shows the slider's value
 range.addEventListener('input', () => {
-    rangeShower.textContent = range.value;
+    document.querySelector('.rangeSliderValue').textContent = range.value;
     const amount = range.value;
     //when event is triggered => removes the old divs and replaces it with new div
     divContainer.innerHTML = "";
@@ -30,6 +27,7 @@ range.addEventListener('input', () => {
 //brightness controller
 const brightness = document.querySelector('#brightnessSlider')
 brightness.addEventListener('input', () => {
+    document.querySelector('.controlBrightness').textContent = brightness.value
     for (const child of divContainer.children){
         child.style.filter = 'brightness(' + brightness.value + ')'
     }
@@ -71,7 +69,7 @@ function allInOneCaptain(buttonValue){
             if (buttonValue.innerHTML == "DRAW"){
                 e.target.style.backgroundColor = 'black';
             }
-            else if (buttonValue.innerHTML == "RANDOMIZER"){
+            else if (buttonValue.innerHTML == "RANDOM"){
                 child.style.backgroundColor = "#" + Math.floor(Math.random()*16777215).toString(16);
             }
             else if (buttonValue.innerHTML == "VIBGYOR"){
